@@ -27,9 +27,13 @@ describe("SubscribeButton component", () => {
     const signInMoked = mocked(signIn);
 
     useSessionMoked.mockReturnValueOnce({
-      data: null,
+      data: {
+        user: null,
+        activeSubscription: null,
+        expires: null,
+      },
       status: "unauthenticated",
-    });
+    } as any);
 
     render(<SubscribeButton />);
     const subscribeButton = screen.getByText("Subscribe Now");
